@@ -1,0 +1,338 @@
+definitions:
+  admin.LocationSave:
+    properties:
+      address:
+        type: string
+      company_name:
+        type: string
+      created_by:
+        type: string
+      description:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+    type: object
+  admin.PolicySave:
+    properties:
+      amount:
+        type: string
+      created_by:
+        type: string
+      description:
+        type: string
+      duration_of_policy:
+        type: string
+      final_reedemable_amount:
+        type: string
+      policy_name:
+        type: string
+    type: object
+  admin.UserDataSave:
+    properties:
+      created_by:
+        type: string
+      email:
+        type: string
+      mobile_no:
+        type: string
+      name:
+        type: string
+    type: object
+  offers.OffersSave:
+    properties:
+      created_by:
+        type: string
+      description:
+        type: string
+      image_url:
+        type: string
+      name:
+        type: string
+      offer_code:
+        type: string
+    type: object
+  user.UserSave:
+    properties:
+      address:
+        type: string
+      certificate_plan:
+        type: string
+      created_by:
+        type: string
+      email:
+        type: string
+      mobile_no:
+        type: string
+      name:
+        type: string
+      registered_date:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /agent:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get all users
+      tags:
+      - Agent Users
+    post:
+      parameters:
+      - description: User Data
+        in: body
+        name: users
+        required: true
+        schema:
+          $ref: '#/definitions/admin.UserDataSave'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.UserDataSave'
+      summary: Add User
+      tags:
+      - Agent Users
+  /agent/{user_id}:
+    get:
+      parameters:
+      - description: User Id
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get Users by Id
+      tags:
+      - Agent Users
+  /file_upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upload file
+      operationId: file.upload
+      parameters:
+      - description: this is for file upload
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Upload file
+      tags:
+      - Upload file
+  /locations:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get all locations
+      tags:
+      - Locations
+    post:
+      parameters:
+      - description: Locations Data
+        in: body
+        name: location
+        required: true
+        schema:
+          $ref: '#/definitions/admin.LocationSave'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.LocationSave'
+      summary: Add Location
+      tags:
+      - Locations
+  /locations/{location_id}:
+    get:
+      parameters:
+      - description: Location Id
+        in: path
+        name: location_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get Locations by Id
+      tags:
+      - Locations
+  /offers:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get all offers
+      tags:
+      - Offers
+    post:
+      parameters:
+      - description: Offers Data
+        in: body
+        name: offer
+        required: true
+        schema:
+          $ref: '#/definitions/offers.OffersSave'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/offers.OffersSave'
+      summary: Add Offer
+      tags:
+      - Offers
+  /offers/{offer_id}:
+    get:
+      parameters:
+      - description: Offer Id
+        in: path
+        name: offer_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get Offers by Id
+      tags:
+      - Offers
+  /policies:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get all policies
+      tags:
+      - Policies
+    post:
+      parameters:
+      - description: Policies Data
+        in: body
+        name: policy
+        required: true
+        schema:
+          $ref: '#/definitions/admin.PolicySave'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/admin.PolicySave'
+      summary: Add Policy
+      tags:
+      - Policies
+  /policies/{policy_id}:
+    get:
+      parameters:
+      - description: Policy Id
+        in: path
+        name: policy_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get Polcies by Id
+      tags:
+      - Policies
+  /users:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get all users
+      tags:
+      - Users
+    post:
+      parameters:
+      - description: User Data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.UserSave'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.UserSave'
+      summary: Add User
+      tags:
+      - Users
+  /users/{user_id}:
+    get:
+      parameters:
+      - description: User Id
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Get Users by Id
+      tags:
+      - Users
+swagger: "2.0"
