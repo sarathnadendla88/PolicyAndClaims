@@ -6,8 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	cors "github.com/itsjamie/gin-cors"
+	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 var (
@@ -32,7 +32,7 @@ func StartApplication() {
 		RequestHeaders:  "Origin, Authorization, Content-Type",
 		ExposedHeaders:  "",
 		MaxAge:          50 * time.Second,
-		Credentials:     true,
+		Credentials:     false,
 		ValidateHeaders: false,
 	}))
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
