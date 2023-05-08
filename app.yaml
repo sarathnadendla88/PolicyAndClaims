@@ -1,2 +1,2 @@
-service: cc-teams
-runtime: go116
+service: default
+runtime: go118
